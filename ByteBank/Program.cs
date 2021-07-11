@@ -35,6 +35,8 @@ namespace ByteBank
             Taxa Op:   {ContaCorrente.TaxaOperacional}
             ";
       Console.WriteLine(t);
+
+      Console.ReadKey();
     }
   }
 }
