@@ -2,6 +2,9 @@ using System;
 
 namespace Models
 {
+  /// <summary>
+  /// Define uma Conta Corrente do banco ByteBank;
+  /// </summary>
   public class ContaCorrente
   {
     public int ContadorSaquesNaoPermitidos { get; private set; }
@@ -27,6 +30,11 @@ namespace Models
         _saldo = value;
       }
     }
+    /// <summary>
+    /// Cria uma instancia de ContaCorrente com os seguintes parametros:
+    /// </summary>
+    /// <param name="agencia"> Propriedade <see cref="Agencia"/>, deve possuir valor > 0</param>
+    /// <param name="numero">  Propriedade <see cref="Numero"/>, deve possuir valor > 0</param>
     public ContaCorrente(int agencia, int numero)
     {
       if (numero <= 0)
@@ -46,6 +54,12 @@ namespace Models
       TaxaOperacional = 30 / TotalDeContasCriadas;
     }
 
+    /// <summary>
+    /// Realiza o Saque e atualiza o valor da propriedade <see cref="Saldo"/>
+    /// </summary>
+    /// <exception cref="ArgumentException"> Excessao lancada quando e passado um valor negativo para o argumento <paramref name="valor"/></exception>
+    /// <exception cref="SaldoInsuficienteException"> Excessao lancada quando o valor de <see cref="Saldo"/> e insuficiente</exception>
+    /// <param name="valor">Deve ser maior que  0  e menor que o <see cref="Saldo"/></param>
     public void Sacar(decimal valor)
     {
       if (valor < 0)

@@ -6,21 +6,21 @@ using System.Threading.Tasks;
 
 namespace Models.Funcionarios
 {
-    public abstract class Funcionario
+  public abstract class Funcionario
+  {
+    public static int TotalDeFuncionarios { get; private set; }
+    public string Nome { get; set; }
+    public string Cpf { get; private set; }
+    public double Salario { get; protected set; }
+    public string Profissao { get; set; }
+    public Funcionario(double salario, string cpf)
     {
-        public static int TotalDeFuncionarios { get; private set; }
-        public string Nome { get; set; }
-        public string Cpf { get; private set; }
-        public double Salario { get; protected set; }
-        public string Profissao { get; set; }
-        public Funcionario(double salario, string cpf)
-        {
-            Cpf = cpf;
-            Salario = salario;
-            TotalDeFuncionarios++;
-        }
-        public abstract void AumentarSalario();
-        public abstract double GetBonificacao();
-
+      Cpf = cpf;
+      Salario = salario;
+      TotalDeFuncionarios++;
     }
+    public abstract void AumentarSalario();
+    internal protected abstract double GetBonificacao();
+
+  }
 }
